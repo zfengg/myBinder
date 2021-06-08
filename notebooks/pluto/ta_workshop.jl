@@ -21,8 +21,7 @@ begin
     Pkg.add([
         Pkg.PackageSpec(name="Plots", version="1"),
 		Pkg.PackageSpec(name="PlutoUI", version="0.7"),
-		Pkg.PackageSpec(name="Latexify", version="0.15"),
-			
+		Pkg.PackageSpec(name="Latexify", version="0.15")
     ])
 	
     using Plots, PlutoUI, LinearAlgebra, Latexify
@@ -54,7 +53,7 @@ Initial ``\theta``: $(@bind iniTheta Slider(0:0.01:2pi; default=0, show_value=tr
 """
 
 # ╔═╡ 7e135382-94a6-4f7b-aa5a-e6880a71151b
-md"## More"
+md"## misc"
 
 # ╔═╡ 76494497-b59f-4f32-8199-c77988b08127
 md"
@@ -66,7 +65,7 @@ md"
 # ╔═╡ 9de9aaeb-9c75-48e4-b282-58bc3c20c1ce
 begin
 	if ! flagAB
-		targetMat = [4 2; 2 4];
+		targetMat = [2 1; 1 2];
 	else
 		targetMat = [a b; b a];
 	end
@@ -165,7 +164,7 @@ end
 plot_2dframe(mapToApply, xyLimit)
 
 # ╔═╡ Cell order:
-# ╠═b080f1dc-bfc1-11eb-2f40-6d4c5cd5414b
+# ╟─b080f1dc-bfc1-11eb-2f40-6d4c5cd5414b
 # ╟─67fdf0d7-9daf-4dbf-9327-08cd6a58e3eb
 # ╟─9264cab9-bf00-467c-9450-2e679e073864
 # ╟─5a595519-bf2f-43c9-a6d9-f371e615d491
