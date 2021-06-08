@@ -21,11 +21,10 @@ begin
     Pkg.add([
         Pkg.PackageSpec(name="Plots", version="1"),
 		Pkg.PackageSpec(name="PlutoUI", version="0.7"),
-		Pkg.PackageSpec(name="Latexify", version="0.15"),
-		Pkg.PackageSpec(name="LaTeXStrings", version="1.2.1")	
+		Pkg.PackageSpec(name="Latexify", version="0.15")
     ])
 	
-    using Plots, PlutoUI, LinearAlgebra, LaTeXStrings, Latexify
+    using Plots, PlutoUI, LinearAlgebra, Latexify
 end
 
 # ╔═╡ 67fdf0d7-9daf-4dbf-9327-08cd6a58e3eb
@@ -94,10 +93,6 @@ begin
 	
 	println("")
 end
-
-# ╔═╡ a124edce-00b6-478c-bba6-d3fb7193acb5
-(A = latexify(targetMat; env=:inline), 
-	O = latexify(ortho; env=:inline), D = latexify(diagMat; env=:inline))
 
 # ╔═╡ dac68b1e-2510-4f4e-a536-8f4cd5f82f87
 md"""
@@ -174,8 +169,7 @@ plot_2dframe(mapToApply, xyLimit)
 # ╟─9264cab9-bf00-467c-9450-2e679e073864
 # ╟─5a595519-bf2f-43c9-a6d9-f371e615d491
 # ╟─b2a687fa-0e65-4a47-ac49-e5156601a077
-# ╟─a124edce-00b6-478c-bba6-d3fb7193acb5
-# ╠═dac68b1e-2510-4f4e-a536-8f4cd5f82f87
+# ╟─dac68b1e-2510-4f4e-a536-8f4cd5f82f87
 # ╟─9de9aaeb-9c75-48e4-b282-58bc3c20c1ce
 # ╟─63ceee16-08b1-4497-80c4-09fa76c0431b
 # ╟─7e135382-94a6-4f7b-aa5a-e6880a71151b
