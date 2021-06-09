@@ -1,5 +1,5 @@
 ### A Pluto.jl notebook ###
-# v0.14.5
+# v0.14.8
 
 using Markdown
 using InteractiveUtils
@@ -53,27 +53,31 @@ Initial ``\theta``: $(@bind iniTheta Slider(0:0.01:2pi; default=0, show_value=tr
 """
 
 # ╔═╡ 7e135382-94a6-4f7b-aa5a-e6880a71151b
-md"## misc"
+md"## Misc"
 
 # ╔═╡ 76494497-b59f-4f32-8199-c77988b08127
 md"
-``\begin{bmatrix} a & b \\ b & a \end{bmatrix}`` $(@bind flagAB CheckBox()) 
-``\quad a=`` $(@bind a Slider(-10:0.2:10; default=2, show_value=true))
-``\quad b=`` $(@bind b Slider(-10:0.2:10; default=1, show_value=true))
+``\begin{bmatrix} a & b \\ b & a \end{bmatrix}`` $(@bind flagABMode CheckBox())
+``\,\, a=`` $(@bind a Slider(-10:0.2:10; default=2, show_value=true))
+``\,\, b=`` $(@bind b Slider(-10:0.2:10; default=1, show_value=true))
+
+``\begin{bmatrix} a & b \\ b & c \end{bmatrix}`` $(@bind flagABCMode CheckBox()) 
+``\,\, c=`` $(@bind c Slider(-10:0.2:10; default=1, show_value=true))
 "
 
 # ╔═╡ 9de9aaeb-9c75-48e4-b282-58bc3c20c1ce
 begin
-	if ! flagAB
-		targetMat = [2 1; 1 2];
+	if ! flagABMode
+		targetMat = [2 1; 1 2]
 	else
-		targetMat = [a b; b a];
+		if flagABCMode
+			targetMat = [a b; b c]
+		else
+			targetMat = [a b; b a]
+		end
 	end
 	println("")
 end
-
-# ╔═╡ c28a7dd0-22dd-4e01-8f71-2343b5bc9e84
-A = latexify(targetMat; env=:inline)
 
 # ╔═╡ d3ea1207-ccd0-4347-b9f1-c3802719b802
 # generate vectors
@@ -97,12 +101,6 @@ begin
 	println("")
 end
 
-# ╔═╡ 1c377ba8-28db-4034-b2de-702bdcfb9427
-O = latexify(ortho; env=:inline)
-
-# ╔═╡ b4ba581f-eca4-43b8-8b22-b883887b2789
-D = latexify(diagMat; env=:inline)
-
 # ╔═╡ d106c542-6ce6-4be8-a74a-062f277f3b1e
 function plot_2dframe(matVec, xyLimit=4)
 	"""
@@ -116,7 +114,7 @@ function plot_2dframe(matVec, xyLimit=4)
 	
 	# canvas settings
 	# plot-canvas
-	sizeCanvas=500
+	sizeCanvas=600
 	# xyLimit=4
 	# grid
 	numGridLines = 50
@@ -163,28 +161,29 @@ end
 # ╔═╡ 5a595519-bf2f-43c9-a6d9-f371e615d491
 plot_2dframe(mapToApply, xyLimit)
 
+# ╔═╡ e859d4a5-8568-4733-bfaa-66fd0e16e8f1
+latexify_md(args...; kwargs...) = Markdown.LaTeX(repr(MIME"text/latex"(), latexify(args...; kwargs...)))
+
 # ╔═╡ dac68b1e-2510-4f4e-a536-8f4cd5f82f87
-#= md"""
-``A =``  $(latexify(targetMat; env=:inline)) 
+md"""
+``A =``  $(latexify_md(targetMat)) 
 
-`` O =`` $(latexify(ortho; env=:inline)) 
+``O =`` $(latexify_md(ortho)) 
 
-``D =`` $(latexify(diagMat; env=:inline))
-""" =#
+``D =`` $(latexify_md(diagMat))
+"""
 
 # ╔═╡ Cell order:
 # ╟─b080f1dc-bfc1-11eb-2f40-6d4c5cd5414b
 # ╟─67fdf0d7-9daf-4dbf-9327-08cd6a58e3eb
 # ╟─9264cab9-bf00-467c-9450-2e679e073864
+# ╟─dac68b1e-2510-4f4e-a536-8f4cd5f82f87
 # ╟─5a595519-bf2f-43c9-a6d9-f371e615d491
 # ╟─b2a687fa-0e65-4a47-ac49-e5156601a077
-# ╟─c28a7dd0-22dd-4e01-8f71-2343b5bc9e84
-# ╟─1c377ba8-28db-4034-b2de-702bdcfb9427
-# ╟─b4ba581f-eca4-43b8-8b22-b883887b2789
 # ╟─63ceee16-08b1-4497-80c4-09fa76c0431b
 # ╟─9de9aaeb-9c75-48e4-b282-58bc3c20c1ce
 # ╟─7e135382-94a6-4f7b-aa5a-e6880a71151b
 # ╟─76494497-b59f-4f32-8199-c77988b08127
 # ╟─d3ea1207-ccd0-4347-b9f1-c3802719b802
 # ╟─d106c542-6ce6-4be8-a74a-062f277f3b1e
-# ╟─dac68b1e-2510-4f4e-a536-8f4cd5f82f87
+# ╟─e859d4a5-8568-4733-bfaa-66fd0e16e8f1
