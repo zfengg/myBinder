@@ -26,9 +26,6 @@ end
 # ╔═╡ 7d9c6d18-8e11-437e-ac37-cd9331ef9fa7
 numPts = 10000
 
-# ╔═╡ 8fb883e5-6d2e-4f10-bb97-26e2f69427d3
-h(z, θ) = (cos(θ) * z - sin(θ)) / (sin(θ) * z + cos(θ))
-
 # ╔═╡ 4be229d2-b16e-4518-aa97-615ae81a2c8c
 md"""
 `` x_{0} = `` $( @bind x0 Slider(-5:0.01:5; default=0, show_value=true) ) ``\quad``
@@ -41,8 +38,11 @@ z0 = Complex(x0, y0)
 # ╔═╡ 7d36894d-6316-4fc7-b858-04495b3924ca
 Θ = range(0, 2pi; length=numPts)
 
+# ╔═╡ 8fb883e5-6d2e-4f10-bb97-26e2f69427d3
+h(z, θ) = (cos(θ) * z - sin(θ)) / (sin(θ) * z + cos(θ))
+
 # ╔═╡ 93123a52-96d1-4b35-af08-d3012075c43a
-orbit = h.(z0, Θ);
+orbit = h.(z0, Θ)
 
 # ╔═╡ 15179e25-a558-47ee-a29c-3e8595c74cf1
 begin
@@ -56,11 +56,11 @@ begin
 end
 
 # ╔═╡ Cell order:
-# ╠═3e9a26b6-6c83-44d1-9149-a31476b98d91
-# ╟─2cea8a10-eebd-11eb-188f-6fce5b7d49d6
-# ╟─7d9c6d18-8e11-437e-ac37-cd9331ef9fa7
-# ╠═8fb883e5-6d2e-4f10-bb97-26e2f69427d3
-# ╠═93123a52-96d1-4b35-af08-d3012075c43a
+# ╟─3e9a26b6-6c83-44d1-9149-a31476b98d91
 # ╟─15179e25-a558-47ee-a29c-3e8595c74cf1
 # ╟─4be229d2-b16e-4518-aa97-615ae81a2c8c
+# ╟─2cea8a10-eebd-11eb-188f-6fce5b7d49d6
 # ╟─7d36894d-6316-4fc7-b858-04495b3924ca
+# ╟─8fb883e5-6d2e-4f10-bb97-26e2f69427d3
+# ╟─7d9c6d18-8e11-437e-ac37-cd9331ef9fa7
+# ╟─93123a52-96d1-4b35-af08-d3012075c43a
