@@ -47,11 +47,14 @@ orbit = h.(z0, Θ)
 
 # ╔═╡ 15179e25-a558-47ee-a29c-3e8595c74cf1
 begin
-	fig_orb = plot(orbit; 
+	fig_orb = plot(
+		orbit; 
 		label="orbit",
 		xlims=(-2, 2),
 		ylims=(0, 5),
-		size=(750, 600))
+		size=(750, 600),
+		framestyle=:origin
+	)
 	# plot!(fig_orb, z0)
 	scatter!(fig_orb, (real(z0), imag(z0)), label="ini. pt")
 end
