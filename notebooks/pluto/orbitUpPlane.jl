@@ -16,7 +16,8 @@ end
 # ╔═╡ 3e9a26b6-6c83-44d1-9149-a31476b98d91
 begin
 	
-	using Pkg
+	import Pkg
+	Pkg.activate(mktempdir())
 	Pkg.add(["Plots", "PlutoUI"])
 
 	using LinearAlgebra, Plots, PlutoUI
